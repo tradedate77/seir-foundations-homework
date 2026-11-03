@@ -62,7 +62,8 @@ Note: Swift's own pages give different institution counts depending on the page 
 === Topic 4: APIs ===
 Read:    MDN Web Docs - Overview of HTTP (HTTP guides)
          https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
-Watched: (title + link) https://youtu.be/lsMQRaeKNDk
+Watched: What is a REST API?
+         https://youtu.be/lsMQRaeKNDk
 AI used: ?
 Prompt(s) I asked the AI:
 
