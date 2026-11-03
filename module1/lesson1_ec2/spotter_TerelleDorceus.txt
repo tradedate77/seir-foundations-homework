@@ -1,15 +1,15 @@
 Spotter = Jason Cook   (the person who spots YOU)
 5 things my spotter learned while working on the lab / homework:
-1. ?
-2. ?
-3. ?
-4. ?
-5. ?
+1. I learned to slow down and pay attention to all the homework instructions. I had to repeat the exercise because I didn't have the right screenshot evidence the first time
+2. Pay attention to what the messages are on the screen. A lot of times the systems are telling us what the problem is, we just have to read it.
+3. Time management is essential. Attempting to cram it all in is a recipe for failure
+4. I learned from manually shutting down the server and seeing that the bank website no longer ran. Then it worked again when I started the server back up
+5. I'm starting to understand what I'm doing with each step, with repetition. In the beginning it's just copy, paste and do what the instructor tells me to do.
 
-I am the spotter for = ?   (the person YOU spot)
+I am the spotter for = Jason Cook
 5 things I learned that I shared with them:
-1. ?
-2. ?
-3. ?
-4. ?
-5. ?
+1. The importance of paying attention to properly setting up the EC2 launch template
+2. The importance of proper screenshots as documentation
+3. Following the directions closely
+4. Improvement through repetition
+5. Practicing the Linux and COBOL commands
