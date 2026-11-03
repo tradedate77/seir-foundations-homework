@@ -18,8 +18,10 @@ Numbers + sources I found (use only the ones I verified myself):
 Note: sources disagree on total market size - Gartner says $119.7B for 2024, Zion Market Research says about $89B for 2024. If I quote a size I must say which source.
 
 === Topic 2: COBOL ===
-Read:    (title + link)
-Watched: (title + link)
+Read:    Wikipedia - COBOL
+         https://en.wikipedia.org/wiki/COBOL
+Watched: Technical Debt and Modernizing COBOL
+         https://youtu.be/7d7-etf-wNI
 AI used: ?
 Prompt(s) I asked the AI:
 
@@ -33,6 +35,7 @@ Numbers + sources I found (use only the ones I verified myself):
 - 52% expect their COBOL applications to last at least another decade (Vanson Bourne / Micro Focus, 2022)
 - 43% of banking systems built on COBOL, 95% of ATM swipes, 80% of in-person transactions, 220 billion lines (Reuters, 2015)
 - 45 of the 50 largest world banks still rely on mainframes; 800 billion+ lines across nearly 30,000 organizations (Kyndryl, 2024 State of Mainframe Modernization)
+- COBOL was introduced in 1959 (GAO, 2025 - GAO-25-107795)
 Note: the numbers DISAGREE by a factor of about 3.5x - Reuters said 220 billion lines in 2015, IBM/techchannel said 250 billion in 2021, Micro Focus said 775-850 billion in 2022. That disagreement is worth writing about.
 
 === Topic 3: SWIFT ===
