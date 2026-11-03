@@ -1,12 +1,126 @@
-AI used = ?
-Conversation share link = ? (or "see ai_review_transcript_TerelleDorceus")
+AI used = use.ai
+Conversation share link = https://use.ai/share/5f68ec2f-b1f8-4aa1-aa7d-6359058f140d
+(transcript also uploaded as ai_review_transcript_TerelleDorceus.pdf / Runbook Feedback.pdf)
 
-Q1: (the question you asked)
+Q1: "Review this runbook with me." I pasted the whole lesson 1 runbook and asked for a
+critique before I started the runs.
 AI's answer, in my own words:
-How I checked it (ran a command, re-read the runbook, asked my spotter, etc.):
+It raised two concrete problems and one trap. First, Step 4 leaves the virtualenv active in a
+terminal that later steps no longer use, so the SWIFT generator in Step 6 could fail with
+ModuleNotFoundError unless venv is reactivated or the generator is stdlib-only. Second, the
+return-code table promises code 8 (business rejection) and code 12 (environment failure) but
+the runbook never has the student actually trigger either one, so those rows are claims rather
+than demonstrations. Third, and the one that stuck with me, `echo $?` reports the exit status
+of the *previous* command, and since the runbook tells students to paste commands one at a
+time, a pause or a stray keystroke between the two lines gives a wrong number with no
+explanation.
+How I checked it:
+I re-read the runbook's Step 3, Step 4 and Step 6 blocks against the Troubleshooting table and
+confirmed the venv point myself on my runs — on run 2 I hit exactly that failure,
+`bash: venv/bin/activate: No such file or directory`, and the fix was to `cd /opt/balerica-bank`
+first. I also confirmed the `echo $?` warning the hard way: on run 6 I typed `TXN0001` at the
+prompt on its own line, got `bash: TXN0001: command not found`, and realised my next `echo $?`
+would have reported the failed command's code rather than the transaction I meant to check.
+I tested the untested rows too — run 6 has a real rc 8 (`STATUS=REJECTED`,
+`REASON=AMOUNT MUST BE GREATER THAN ZERO`) and a real rc 12 (`ERROR=CANNOT OPEN
+data/accounts.dat`, `FILE-STATUS=35`, exit 12), which are the two rows the AI said nobody
+actually exercises.
 
-Q2: ...
-(minimum 5 questions)
+Q2: "As a new student to cloud engineering, what should I focus on for this exercise?"
+AI's answer, in my own words:
+It said this is a confidence exercise dressed up as a COBOL exercise — the real skill being
+trained is being dropped into a server you did not build and working out what is going on. It
+named four things worth learning: reading output before typing the next command; return codes
+(0/4/8/12) because a program that exits 0 while reporting failure is invisible to CI, health
+checks and orchestrators; the layering (browser/curl -> FastAPI -> COBOL binary -> fixed-width
+file); and reading fixed-width records by counting columns. It told me to deliberately not
+worry about the COBOL language itself, the exact security-group click path, or the
+Bedrock/IAM setup.
+How I checked it:
+I tested the return-code claim directly and it held — `account_lookup 100001` exited 0,
+`account_lookup 999999` exited 4, the zero-amount payment exited 8, the wrong-folder lookup
+exited 12, and in every case the program printed its own ERROR= / REASON= text before exiting.
+I confirmed the layering claim by watching it happen on run 7, where the uvicorn log shows
+`GET /docs HTTP/1.1" 200 OK` and `GET /openapi.json HTTP/1.1" 200 OK` coming in over HTTP while
+the lookup underneath is served by the compiled binary. I checked the "don't worry about
+COBOL" advice against the actual runbook and agreed — I never invoked a COBOL compiler myself;
+install.sh did that.
+
+Q3: "Do you think my instructor used AI to help create this lab?"
+AI's answer, in my own words:
+It said probably partly, but it could not be confident, and it split the evidence. Pointing
+toward AI involvement: a consistent pedagogical voice held across a very long document, and
+knowledge checks written by something that has watched students fail at this specific task.
+Pointing away: AI-assisted material usually contains instructions referencing things that do
+not exist, and this runbook's gaps were the ordinary kind a human leaves when they know their
+own setup too well to document it. Its actual read was a domain expert who used a model as a
+drafting tool, and it said so plainly: that judgement came from prose style alone, and to get
+a real answer I would have to check the git history myself.
+How I checked it:
+This one I could not verify and I am not pretending otherwise — I have no access to the
+instructor's repository history, so I cannot tell from commits how the runbook was written.
+What I did instead was check the part of the answer that was checkable: whether the runbook's
+gaps are real. It flagged the venv requirement and the untested codes 8 and 12; I confirmed
+both exist (see Q1). So I accept the reasoning structure but treat the conclusion as an
+inference I cannot confirm, and the AI said the same about itself.
+
+Q4: "What does Bedrock mean in this context?" (Step 8's /ask endpoint)
+AI's answer, in my own words:
+Bedrock means Amazon Bedrock, AWS's managed service for calling foundation models through an
+AWS API instead of a vendor's own portal. It is not a model — it is the doorway that
+authenticates, routes to whichever model is enabled, meters and bills. It shows up in Step 8
+where `curl -X POST http://127.0.0.1:8000/ask` reaches the platform's helper agent. The
+interesting part, it said, is the offline fallback: when the IAM role or model access is
+missing, the agent answers in offline mode rather than erroring, which is the same instinct as
+the return codes — handle the failure explicitly. Nothing for me to configure, since role
+creation is an instructor action.
+How I checked it:
+I re-read Step 8 and the Troubleshooting table and confirmed the runbook really does flag the
+IAM role creation as an instructor action and really does describe the offline fallback, so the
+AI's account matched the text. I did not test this one — none of my runs went past Step 4, so
+I never called /ask and cannot confirm from my own observation what happens when the
+permissions are absent. That is a gap in my evidence, not something I verified.
+
+Q5: "What are the COBOL commands used here that I should study more to understand for the
+future?" (asked because I wanted something to take away from the lab)
+AI's answer, in my own words:
+It opened by correcting the premise: the lab barely uses COBOL commands at all.
+`./cobol/bin/account_lookup` and `./cobol/bin/payment_post` are compiled Linux binaries, so no
+COBOL invocation happens by hand anywhere in the runbook. What the lab teaches is COBOL
+concepts: PIC clauses and the implied decimal (PIC 9(6)V99 — the V costs no byte, which is
+exactly why `000000012550` means 125.50), COMP-3 packed decimal which I have not met yet, the
+four DIVISION structure, and STOP RUN RETURNING n as the mechanism behind the 0/4/8/12 codes.
+It suggested reading the .cbl source on the instance rather than studying COBOL generally.
+How I checked it:
+The implied-decimal explanation matched what I had already worked out by hand from the
+runbook's column layout: Alice's balance field is 12 characters, `00000500000`, and the last
+two are cents, so it is $5000.00 with no decimal point stored anywhere in the file — the
+runbook's own `cut -c45-56` line and my `cat data/accounts.dat` output agree. The claim that
+the binaries are compiled executables I confirmed from my own runs: I never typed a COBOL
+command and the programs ran. It also flagged its own uncertainty here — it said it was
+inferring the .cbl filenames and internal structure because it had not seen the source files,
+only the runbook's directory listing — which matched what I found, since `ls` shows a cobol
+directory but I did not open the sources.
 
 Where the AI was wrong, vague, or out of date:
-(at least one example, and how you found out)
+1. It invented run details it could not have known. Asked for "an intelligent question I could
+ask my instructor, that shows I repeated the exercise several times", it offered a scripted
+question describing "my third run" with the SWIFT generator returning `FAILED: 0` and
+`REJECTED: 4` instead of the runbook's 7/3 split. I never saw that output. Using the question
+as written would have been me claiming an observation I did not make, and the AI itself warned
+that a follow-up would flip the impression hard. I discarded it and used the return-code
+questions instead, which I can actually evidence from run 6.
+2. It estimated the runbook at 615 lines "without drift" in one answer and used that figure as
+evidence in another. I could not verify the line count from what I had, and a style argument
+resting on an unverified number is weaker than it was presented as. I treated the authorship
+conclusion as unconfirmed (see Q3).
+3. It confidently described the internal structure of `account_lookup.cbl` and
+`payment_post.cbl` — which divisions they contain, what their DATA DIVISION specifies — while
+the lab uses compiled binaries I never inspected. It did flag this at the end of that answer
+as "my reconstruction from the runbook's directory listing", so it corrected itself, but the
+body of the answer stated it as fact first. That is the pattern worth watching: the caveat
+arrives after the assertion.
+4. Not wrong, but incomplete: its venv diagnosis assumed `ModuleNotFoundError` is the likely
+failure. The failure I actually hit first was `bash: venv/bin/activate: No such file or
+directory`, because I was in the wrong directory. The AI's cause was real; mine was upstream of
+it.
