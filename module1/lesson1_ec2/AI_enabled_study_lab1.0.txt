@@ -71,9 +71,11 @@ Numbers + sources I found (use only the ones I verified myself):
 - Average API response time improved to 324ms (Open Banking Limited, 2025)
 Note: the UK figure (100 billion cumulative) and the global forecast (137 billion in one year) measure different things - cumulative UK vs global annual. Do not compare them directly.
 
-=== Topic 5: The fifth topic ===
-Read:    (title + link)
-Watched: (title + link)
+=== Topic 5: Where COBOL, SWIFT, APIs, and databases meet ===
+Read:    GAO - INFORMATION TECHNOLOGY: Agencies Need to Plan for Modernizing Critical
+         Decades-Old Legacy Systems (GAO-25-107795), published 17 July 2025
+         https://files.gao.gov/reports/GAO-25-107795/index.html
+Watched: (title + link) https://www.youtube.com/watch?v=-CI8hb-077E
 AI used: ?
 Prompt(s) I asked the AI:
 
@@ -81,12 +83,13 @@ One thing the AI said that I double-checked, and what I found:
 
 Paragraph (minimum 5 sentences):
 
-Numbers + sources:
-- (number) - (source, year)
-
-NOTE TO SELF: check the assignment page for the exact name of topic 5 and paste the
-two assigned sources here. The research points for topics 1-4 came from the assignment;
-topic 5 was cut off in what I read, so confirm it before submitting.
+Numbers + sources I found (use only the ones I verified myself):
+- Federal government spends more than $100 billion a year on IT and cyber-related investments; agencies typically report about 80% of that on operations and maintenance of existing IT including legacy systems (GAO, 2025 - GAO-25-107795)
+- About $83 billion (79%) of planned total IT spending for fiscal year 2025 was intended for operations and maintenance, across the 24 Chief Financial Officers Act agencies (GAO, 2025)
+- GAO identified 11 legacy IT systems most in need of modernization; 8 of the 11 reported using legacy programming languages such as COBOL and assembly language code (GAO, 2025)
+- One profiled system was initially developed in 1964 and still runs on COBOL and assembly language code; its last significant upgrade was in 2005 (GAO, 2025)
+- Gartner has reported that organizations using COBOL should consider replacing the language, because procurement and operating costs are expected to rise and fewer people are available with the right skills (Gartner, cited in GAO, 2025)
+- COBOL was introduced in 1959 (GAO, 2025)
 
 === HOW I CHECKED (notes for myself) ===
 For every number above I opened the source page and confirmed the figure appears there
