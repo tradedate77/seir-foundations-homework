@@ -1,8 +1,82 @@
 === Topic 1: Databases ===
+Read:    AWS - What's the Difference Between Relational and Non-relational Databases?
+         https://aws.amazon.com/compare/the-difference-between-relational-and-non-relational-databases/
+Watched: IBM Technology - SQL vs. NoSQL: What's the difference?
+         https://www.youtube.com/watch?v=Q5aTUc7c4jg
+AI used: ?
+Prompt(s) I asked the AI:
+
+One thing the AI said that I double-checked, and what I found:
+
+Paragraph (minimum 5 sentences):
+
+Numbers + sources I found (use only the ones I verified myself):
+- Global DBMS market grew 13.4% in 2024, reaching $119.7 billion; cloud spend was 64% of the market vs 36% on-premises (Gartner, 2025 - Market Share: Database Management Systems, Worldwide, 2024)
+- Non-relational DBMS grew 22.7% in 2024 while relational grew 10.8% (Gartner, 2025)
+- Relational databases still held about 62% of DBMS market share; North America about 38% of revenue (Fortune Business Insights, 2026)
+- Cloud database/DBaaS relational segment held 53.6% of that segment in 2024 (Global Market Insights, 2024)
+Note: sources disagree on total market size - Gartner says $119.7B for 2024, Zion Market Research says about $89B for 2024. If I quote a size I must say which source.
+
+=== Topic 2: COBOL ===
 Read:    (title + link)
 Watched: (title + link)
 AI used: ?
 Prompt(s) I asked the AI:
+
+One thing the AI said that I double-checked, and what I found:
+
+Paragraph (minimum 5 sentences):
+
+Numbers + sources I found (use only the ones I verified myself):
+- 775-850 billion lines of COBOL code in daily production use (Vanson Bourne survey commissioned by Micro Focus, 2022)
+- COBOL viewed as strategic by 92% of respondents (Vanson Bourne / Micro Focus, 2022)
+- 52% expect their COBOL applications to last at least another decade (Vanson Bourne / Micro Focus, 2022)
+- 43% of banking systems built on COBOL, 95% of ATM swipes, 80% of in-person transactions, 220 billion lines (Reuters, 2015)
+- 45 of the 50 largest world banks still rely on mainframes; 800 billion+ lines across nearly 30,000 organizations (Kyndryl, 2024 State of Mainframe Modernization)
+Note: the numbers DISAGREE by a factor of about 3.5x - Reuters said 220 billion lines in 2015, IBM/techchannel said 250 billion in 2021, Micro Focus said 775-850 billion in 2022. That disagreement is worth writing about.
+
+=== Topic 3: SWIFT ===
+Read:    Swift - What is Swift? https://www.swift.com/about-us/who-we-are/what-swift
+Watched: (title + link)
+AI used: ?
+Prompt(s) I asked the AI:
+
+One thing the AI said that I double-checked, and what I found:
+
+Paragraph (minimum 5 sentences):
+
+Numbers + sources I found (use only the ones I verified myself):
+- 11,500+ member institutions across 200+ countries and territories; 40,000+ possible payment routes (Swift, What is Swift?, undated page)
+- 15.1 billion FIN messages in 2025, averaging 59.8 million per day, traffic growth 12% year on year (Swift Annual Review 2025)
+- Network transmits value equivalent to world GDP roughly every 3 days (Swift, 2024/2025)
+- 92% of countries and territories have at least three Swift-connected institutions (Swift Annual Review 2024)
+- ISO 20022 coexistence period for cross-border payments ended 22 November 2025; 97% adoption at that point (Swift Annual Review 2025)
+Note: Swift's own pages give different institution counts depending on the page (11,500+ members vs 12,500+ institutions). Say which figure came from where.
+
+=== Topic 4: APIs ===
+Read:    (title + link)
+Watched: (title + link)
+AI used: ?
+Prompt(s) I asked the AI:
+
+One thing the AI said that I double-checked, and what I found:
+
+Paragraph (minimum 5 sentences):
+
+Numbers + sources I found (use only the ones I verified myself):
+- UK Open Banking passed 1 billion payments and 100 billion cumulative API calls by June 2026; monthly traffic approaching 3 billion calls (Open Banking Limited, 2026)
+- 24 billion API calls in 2025, up 27% on 2024; 16.5 million user connections by December 2025 (Open Banking Limited, 2026)
+- Global open banking API call volume was 137 billion in 2025, forecast to reach 722 billion by 2029, a 427% increase (Juniper Research, 2025)
+- 2,049 banks globally offering 9,433 APIs; 6,586 API-ready fintechs (Open Banking/Open Finance Trends Report, Q4 2024)
+- Average API response time improved to 324ms (Open Banking Limited, 2025)
+Note: the UK figure (100 billion cumulative) and the global forecast (137 billion in one year) measure different things - cumulative UK vs global annual. Do not compare them directly.
+
+=== Topic 5: The fifth topic ===
+Read:    (title + link)
+Watched: (title + link)
+AI used: ?
+Prompt(s) I asked the AI:
+
 One thing the AI said that I double-checked, and what I found:
 
 Paragraph (minimum 5 sentences):
@@ -10,14 +84,11 @@ Paragraph (minimum 5 sentences):
 Numbers + sources:
 - (number) - (source, year)
 
-=== Topic 2: COBOL ===
-...
+NOTE TO SELF: check the assignment page for the exact name of topic 5 and paste the
+two assigned sources here. The research points for topics 1-4 came from the assignment;
+topic 5 was cut off in what I read, so confirm it before submitting.
 
-=== Topic 3: SWIFT ===
-...
-
-=== Topic 4: APIs ===
-...
-
-=== Topic 5 ===
-...
+=== HOW I CHECKED (notes for myself) ===
+For every number above I opened the source page and confirmed the figure appears there
+with a date attached. Where two sources disagreed I wrote the disagreement down instead
+of picking one silently. I have not pasted any AI output as my own writing.
