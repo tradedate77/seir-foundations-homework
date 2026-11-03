@@ -136,7 +136,9 @@ clone was attempted.)
 ## COBOL practice
 
 Instance used: run 6, `i-0b1b56f0ac18fdbf5` (2026-11-01, boot 2026-11-01 16:37:56).
-Work done from `/opt/balerica-bank`.
+Work done from `/opt/balerica-bank`. All five screenshots in this section
+(`cobol_rc0.jpg`, `cobol_rc4.jpg`, `cobol_rc8.jpg`, `cobol_rc12.jpg`,
+`cobol_ledger_decode.jpg`) are from this instance and carry the ID line.
 
 I repeated the rc 0, rc 4 and payment checks on several other runs (1, 2, 4, 5 and 7) as
 practice. The full sequence below, including the rc 8 with initials and the rc 12 environment
@@ -156,7 +158,9 @@ Output:
 100003Maria Garcia                 ACTIVE  00000810000USD
 ```
 
-Three accounts: `100001`, `100002`, `100003`. All three are `ACTIVE`.
+Three accounts: `100001`, `100002`, `100003`. All three are `ACTIVE`, so the bonus test
+(posting to a non-ACTIVE account) is not available on this ledger. I hit the other rc 8 route
+instead — an amount larger than the balance — which returns `REASON=INSUFFICIENT FUNDS`.
 
 ### 7.2 — Every return code, on purpose
 
@@ -201,7 +205,7 @@ not crash — it reports and exits, which is the point of using return codes.
 **rc 8 — business rejection**
 
 ```bash
-./cobol/bin/payment_post TXN-TD-0001 100001 5000000000.00 USD TEST-ZERO
+./cobol/bin/payment_post TXN-TD-0001 100001 0.00 USD TEST-ZERO
 echo $?
 ```
 
@@ -217,9 +221,29 @@ REASON=AMOUNT MUST BE GREATER THAN ZERO
 8
 ```
 
+And the second rejection route, an amount larger than the balance:
+
+```bash
+./cobol/bin/payment_post TXN-TD-0001 100001 5000000000.00 USD TEST-ZERO
+echo $?
+```
+
+Output:
+
+```
+TXN=TXN-TD-0001
+ACCOUNT=100001
+AMOUNT=5000000000.00
+CURRENCY=USD
+STATUS=REJECTED
+REASON=INSUFFICIENT FUNDS
+8
+```
+
 Return code 8 means the request was well-formed but the *business rules* refused it. A zero
 amount is not a syntax error; it is a rule the bank enforces, and it comes back as a rejection
-rather than a failure.
+rather than a failure. Both routes give 8 with a different `REASON=`, which is how the program
+tells a human why it refused.
 
 **rc 12 — environment failure**
 
@@ -252,6 +276,26 @@ cut -c45-56 data/accounts.dat    # balance (implied decimal)
 cut -c57-59 data/accounts.dat    # currency
 ```
 
+Output:
+
+```
+100001
+100002
+100003
+Alice Johnson
+Robert Smith
+Maria Garcia
+ACTIVE
+ACTIVE
+ACTIVE
+00000500000
+00000275000
+00000810000
+USD
+USD
+USD
+```
+
 Alice Johnson's row, decoded:
 
 | Columns | Field | Raw value |
@@ -262,13 +306,14 @@ Alice Johnson's row, decoded:
 | 45-56 | Balance | `00000500000` |
 | 57-59 | Currency | `USD` |
 
-The raw 12 characters of Alice's balance are `00000500000`. The last two digits are the cents,
-so the value is 500000 + 00 -> **$5000.00**. There is no decimal point in the file because this
-is a fixed-width format inherited from COBOL: every record is exactly 59 characters, so a `.`
-would consume a byte that the layout has not budgeted for, and the meaning of the last two
-digits is defined by the *layout* rather than by a character in the data. This is the "implied
-decimal" convention, and it is why `cut -c45-56` is described as the balance field rather than
-as a number.
+The raw balance characters are `00000500000`. The last two digits are the cents, so the value
+is 500000 + 00 -> **$5000.00**. There is no decimal point in the file because this is a
+fixed-width format inherited from COBOL: every record is exactly 59 characters, so a `.` would
+consume a byte that the layout has not budgeted for, and the meaning of the last two digits is
+defined by the *layout* rather than by a character in the data. This is the "implied decimal"
+convention, and it is why `cut -c45-56` is described as the balance field rather than as a
+number. Working the same rule on the other two accounts: `00000275000` is $2750.00 and
+`00000810000` is $8100.00.
 
 ### 7.4 — Payments journal
 
@@ -297,8 +342,8 @@ Optional — SQLite:
 
 1. **I used a transaction ID without my initials on most runs.** The assignment requires every
    `TXN` to start with my initials, and I posted `TXN0001` instead of `TXN-TD-0001` on runs 1, 2,
-   4, 5, 6 and 7. Only the run 6 rc 8 test uses the correct form. I need to redo at least one
-   posting as `TXN-TD-0001`.
+   4, 5 and 7. I caught it on run 6 and re-ran with `TXN-TD-0001`, which is the version in the
+   screenshots.
 2. **I typed the transaction ID as a command.** `TXN0001` at the prompt gave
    `bash: TXN0001: command not found`, because I forgot it belongs as an argument to
    `payment_post`. The shell reads the first word as the program name.
