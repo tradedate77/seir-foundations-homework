@@ -1,0 +1,23 @@
+=== Topic 1: Databases ===
+Read:    (title + link)
+Watched: (title + link)
+AI used: ?
+Prompt(s) I asked the AI:
+One thing the AI said that I double-checked, and what I found:
+
+Paragraph (minimum 5 sentences):
+
+Numbers + sources:
+- (number) - (source, year)
+
+=== Topic 2: COBOL ===
+...
+
+=== Topic 3: SWIFT ===
+...
+
+=== Topic 4: APIs ===
+...
+
+=== Topic 5 ===
+...

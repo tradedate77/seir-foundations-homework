@@ -1,0 +1,12 @@
+AI used = ?
+Conversation share link = ? (or "see ai_review_transcript_TerelleDorceus")
+
+Q1: (the question you asked)
+AI's answer, in my own words:
+How I checked it (ran a command, re-read the runbook, asked my spotter, etc.):
+
+Q2: ...
+(minimum 5 questions)
+
+Where the AI was wrong, vague, or out of date:
+(at least one example, and how you found out)
