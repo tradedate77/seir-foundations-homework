@@ -135,8 +135,12 @@ clone was attempted.)
 
 ## COBOL practice
 
-Instance used: run 3, `i-01fe9fbc7f4bdff66` (2026-10-31, boot 2026-11-01 01:55:18).
+Instance used: run 6, `i-0b1b56f0ac18fdbf5` (2026-11-01, boot 2026-11-01 16:37:56).
 Work done from `/opt/balerica-bank`.
+
+I repeated the rc 0, rc 4 and payment checks on several other runs (1, 2, 4, 5 and 7) as
+practice. The full sequence below, including the rc 8 with initials and the rc 12 environment
+failure, was captured on run 6.
 
 ### 7.1 — Customers in the ledger
 
@@ -259,7 +263,7 @@ Alice Johnson's row, decoded:
 | 57-59 | Currency | `USD` |
 
 The raw 12 characters of Alice's balance are `00000500000`. The last two digits are the cents,
-so the value is 500000 + 00 → **$5000.00**. There is no decimal point in the file because this
+so the value is 500000 + 00 -> **$5000.00**. There is no decimal point in the file because this
 is a fixed-width format inherited from COBOL: every record is exactly 59 characters, so a `.`
 would consume a byte that the layout has not budgeted for, and the meaning of the last two
 digits is defined by the *layout* rather than by a character in the data. This is the "implied
@@ -291,19 +295,23 @@ Optional — SQLite:
 
 ## Mistakes I made
 
-1. **I typed the transaction ID as a command.** `TXN0001` at the prompt gave
+1. **I used a transaction ID without my initials on most runs.** The assignment requires every
+   `TXN` to start with my initials, and I posted `TXN0001` instead of `TXN-TD-0001` on runs 1, 2,
+   4, 5, 6 and 7. Only the run 6 rc 8 test uses the correct form. I need to redo at least one
+   posting as `TXN-TD-0001`.
+2. **I typed the transaction ID as a command.** `TXN0001` at the prompt gave
    `bash: TXN0001: command not found`, because I forgot it belongs as an argument to
    `payment_post`. The shell reads the first word as the program name.
-2. **I treated a binary as a directory.** `cd /opt/balerica-bank/cobol/bin/account_lookup 100001`
+3. **I treated a binary as a directory.** `cd /opt/balerica-bank/cobol/bin/account_lookup 100001`
    produced `bash: cd: too many arguments`. I should have `cd`'d to the folder and run the
    binary with `./`.
-3. **I activated the virtualenv from the wrong folder.** `source venv/bin/activate` failed with
+4. **I activated the virtualenv from the wrong folder.** `source venv/bin/activate` failed with
    `No such file or directory` until I `cd`'d into `/opt/balerica-bank`, because the path is
    relative.
-4. **My first submission of screenshots would not have counted.** I took them without the ID
+5. **My first submission of screenshots would not have counted.** I took them without the ID
    line visible, so there was nothing tying the run to an instance or a date. I had to repeat
    the exercise to get evidence that actually proves the work.
-5. **I left the clone command running at a credential prompt.** The first `git_clone`
+6. **I left the clone command running at a credential prompt.** The first `git_clone`
    screenshot stopped at `Username for 'https://github.com':` — the repo was not readable yet,
    and typing credentials there would have violated the "no tokens on the server" rule. I
    Ctrl+C'd and re-ran it once the repo was public.
