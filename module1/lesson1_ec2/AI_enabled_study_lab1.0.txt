@@ -39,8 +39,10 @@ Numbers + sources I found (use only the ones I verified myself):
 Note: the numbers DISAGREE by a factor of about 3.5x - Reuters said 220 billion lines in 2015, IBM/techchannel said 250 billion in 2021, Micro Focus said 775-850 billion in 2022. That disagreement is worth writing about.
 
 === Topic 3: SWIFT ===
-Read:    Swift - What is Swift? https://www.swift.com/about-us/who-we-are/what-swift
-Watched: (title + link)
+Read:    Wikipedia - SWIFT
+         https://en.wikipedia.org/wiki/SWIFT
+Watched: (title + link) https://youtu.be/eoXdyO9oGJc
+Also used: Swift - What is Swift? https://www.swift.com/about-us/who-we-are/what-swift
 AI used: ?
 Prompt(s) I asked the AI:
 
