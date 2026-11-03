@@ -59,8 +59,9 @@ Numbers + sources I found (use only the ones I verified myself):
 Note: Swift's own pages give different institution counts depending on the page (11,500+ members vs 12,500+ institutions). Say which figure came from where.
 
 === Topic 4: APIs ===
-Read:    (title + link)
-Watched: (title + link)
+Read:    MDN Web Docs - Overview of HTTP (HTTP guides)
+         https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
+Watched: (title + link) https://youtu.be/lsMQRaeKNDk
 AI used: ?
 Prompt(s) I asked the AI:
 
