@@ -75,7 +75,8 @@ Note: the UK figure (100 billion cumulative) and the global forecast (137 billio
 Read:    GAO - INFORMATION TECHNOLOGY: Agencies Need to Plan for Modernizing Critical
          Decades-Old Legacy Systems (GAO-25-107795), published 17 July 2025
          https://files.gao.gov/reports/GAO-25-107795/index.html
-Watched: (title + link) https://www.youtube.com/watch?v=-CI8hb-077E
+Watched: Technical Debt and Modernizing COBOL
+         https://youtu.be/-CI8hb-077E
 AI used: ?
 Prompt(s) I asked the AI:
 
