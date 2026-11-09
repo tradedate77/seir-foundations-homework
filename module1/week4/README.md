@@ -16,10 +16,10 @@ Assignment: https://github.com/BalericaAI/SEIR-Foundations/tree/main/module1/les
 
 | File | What it is |
 |------|------------|
-| `Week4Terminal Screenshot.jpeg` | EC2 shell showing all seven scripts run in order, plus the Lesson 1 ID line |
-| `Slack1.jpeg` | `#balerica-alerts` — connectivity test (TEST-001) and the hw2 severity tour |
-| `Slack2.jpeg` | `#balerica-alerts` — hw3, hw4, hw5, and the first two hw6 incidents |
-| `Slack3.jpeg` | `#balerica-alerts` — hw6 incident drill (all three) and the hw7 morning report |
+| `Week4Terminal_Screenshot.jpg` | EC2 shell showing all seven scripts run in order, plus the Lesson 1 ID line |
+| `Slack1.jpg` | `#balerica-alerts` — connectivity test (TEST-001) and the hw2 severity tour |
+| `Slack2.jpg` | `#balerica-alerts` — hw3, hw4, hw5, and the first two hw6 incidents |
+| `Slack3.jpg` | `#balerica-alerts` — hw6 incident drill (all three) and the hw7 morning report |
 
 ## Screenshots
 
@@ -27,10 +27,10 @@ _named for the step each one verifies:_
 
 | File | Shows |
 |------|--------|
-| `Week4Terminal Screenshot.jpeg` | `hw1`–`hw7` each reporting `Delivered to Slack`, and the ID line `whoami && TZ='America/New_York' date && ec2-metadata -i` returning `root`, `Sun Nov 8 22:59:41 EST 2026`, `instance-id: i-0a0216044abc01834` |
-| `Slack1.jpeg` | TEST-001 connectivity test, then the four hw2 severities: INFO, WARNING, ERROR, CRITICAL (all HW-002) |
-| `Slack2.jpeg` | HW-003 (`hw3_server_time.py`), HW-004 (`hw4_disk_watch.py`), HW-005 (`hw5_load_check.py`), DRILL-3940 and DRILL-4539 (`hw6_incident_drill.py`) |
-| `Slack3.jpeg` | DRILL-3940, DRILL-4539, DRILL-6262 (`hw6_incident_drill.py`), and HW-007 (`hw7_morning_report.py`) |
+| `Week4Terminal_Screenshot.jpg` | `hw1`–`hw7` each reporting `Delivered to Slack`, and the ID line `whoami && TZ='America/New_York' date && ec2-metadata -i` returning `root`, `Sun Nov 8 22:59:41 EST 2026`, `instance-id: i-0a0216044abc01834` |
+| `Slack1.jpg` | TEST-001 connectivity test, then the four hw2 severities: INFO, WARNING, ERROR, CRITICAL (all HW-002) |
+| `Slack2.jpg` | HW-003 (`hw3_server_time.py`), HW-004 (`hw4_disk_watch.py`), HW-005 (`hw5_load_check.py`), DRILL-3940 and DRILL-4539 (`hw6_incident_drill.py`) |
+| `Slack3.jpg` | DRILL-3940, DRILL-4539, DRILL-6262 (`hw6_incident_drill.py`), and HW-007 (`hw7_morning_report.py`) |
 
 ## Notes
 
