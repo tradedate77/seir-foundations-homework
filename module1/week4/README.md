@@ -67,7 +67,6 @@ If the load was a higher capacity than the traffic the bank could handle.
 It delivered successfully, so no need to wake a human at 3 am.
 
 **2. FastAPI `/payments` endpoint responded 500 twice in one minute.**
-I admit I don't know what this means yet.
 
 **3. SWIFT traffic generator queue depth climbing: 42 messages waiting.**
 This is the one that should wake a human up. It means SWIFT messages carrying
