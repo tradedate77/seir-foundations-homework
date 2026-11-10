@@ -77,8 +77,11 @@ at 3 am.
 
 ### Q6 (`hw7_morning_report.py`) — Prediction vs. result (experiment 1)
 
-**Prediction:** Raising `SLACK_ALERT_SEVERITY` to `CRITICAL` would send a more
-serious alert, and the lower severities would no longer get through.
+**Prediction:** Only one of the four messages would arrive. With
+`SLACK_ALERT_SEVERITY=CRITICAL`, the threshold sits above INFO, WARNING and
+ERROR, so those three are filtered out before they ever reach Slack. The
+severity setting is a floor applied on send, not a label that upgrades a
+message — so the CRITICAL alert goes through and the other three do not.
 
 **Result:** That is exactly what happened — the CRITICAL alert arrived, and the
 less serious alerts below the threshold did not.
