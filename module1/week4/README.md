@@ -77,6 +77,8 @@ at 3 am.
 
 ### Q6 (`hw7_morning_report.py`) — Prediction vs. result (experiment 1)
 
-_Prediction:_
+**Prediction:** Raising `SLACK_ALERT_SEVERITY` to `CRITICAL` would send a more
+serious alert, and the lower severities would no longer get through.
 
-_Result:_
+**Result:** That is exactly what happened — the CRITICAL alert arrived, and the
+less serious alerts below the threshold did not.
